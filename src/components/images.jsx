@@ -11,13 +11,13 @@ function ImageComponent(){
       <img src={scenic}
         height={400}
         width={400}/>
-    <img src={scenic1}
+      <img src={scenic1}
         height={400}
         width={400}/>
-    <img src={scenic2}
+      <img src={scenic2}
         height={400}
         width={400}/>
-    <img src={scenic3}
+      <img src={scenic3}
         height={400}
         width={400}/>
     </div>

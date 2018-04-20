@@ -10,17 +10,17 @@ function Task(props){
           background-color: beige;
         }
         `}</style>
-        <h3>{props.location} - {props.names}</h3>
-          <p><em>{props.job}</em></p>
-            <hr/>
-            </div>
-          );
-        }
+      <h3>{props.location} - {props.names}</h3>
+      <p><em>{props.job}</em></p>
+      <hr/>
+    </div>
+  );
+}
 
-        Task.propTypes = {
-          names: PropTypes.string.isRequired,
-          location: PropTypes.string.isRequired,
-          job: PropTypes.string
-        };
+Task.propTypes = {
+  names: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  job: PropTypes.string
+};
 
-        export default Task;
+export default Task;
