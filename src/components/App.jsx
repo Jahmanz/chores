@@ -10,13 +10,13 @@ function App(){
   return (
     <div>
       <Header/>
-      <Switch>
-        <Route exact path='/' component={TaskList} />
-        <Route path='/newtask' component={NewTaskForm} />
-      </Switch>
-      <ImageComponent/>
-    </div>
-  );
-}
+        <Switch>
+          <Route exact path='/' component={TaskList} />
+            <Route path='/newtask' component={NewTaskForm} />
+            </Switch>
+            <ImageComponent/>
+            </div>
+          );
+        }
 
-export default App;
+        export default App;

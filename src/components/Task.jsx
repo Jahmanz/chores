@@ -1,25 +1,26 @@
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Ticket(props){
+function Task(props){
   return (
     <div>
       <style global jsx>{`
-         div {
-           background-color: beige;
-         }
-       `}</style>
-      <h3>{props.location} - {props.names}</h3>
-      <p><em>{props.issue}</em></p>
-      <hr/>
-    </div>
-  );
-}
+        div {
+          background-color: beige;
+        }
+        `}</style>
+        <h3>{props.location} - {props.names}</h3>
+          <p><em>{props.job}</em></p>
+            <hr/>
+            </div>
+          );
+        }
 
-Ticket.propTypes = {
-  names: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  issue: PropTypes.string
-};
+        Task.propTypes = {
+          names: PropTypes.string.isRequired,
+          location: PropTypes.string.isRequired,
+          job: PropTypes.string
+        };
 
-export default Ticket;
+        export default Task;
