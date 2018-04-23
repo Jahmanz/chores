@@ -1,6 +1,7 @@
 import React from 'react';
 import ConfirmationQuestions from './ConfirmationQuestions';
 import NewTaskForm from './NewTaskForm';
+import PropTypes from 'prop-types';
 
 class NewTaskControl extends React.Component {
 
@@ -9,20 +10,20 @@ class NewTaskControl extends React.Component {
     this.state = {
       formVisibleOnPage: false
     };
-    // this.handleClick = this.handleClick.bind(this);
+    this.handleConfirmation = this.handleConfirmation.bind(this);
   }
 
-  // handleClick(){
-  //   this.setState({formVisibleOnPage: true});
-  //   console.log('formVisibleOnPage is currently set to:' + this.state.formVisibleOnPage);
-  // }
+  handleConfirmation(){
+    this.setState({formVisibleOnPage: true});
+  }
+
 
   render(){
     let currentlyVisibleContent = null;
     if (this.state.formVisibleOnPage){
-      currentlyVisibleContent = <NewTaskForm />;
+      currentlyVisibleContent = <NewTaskForm onNewTaskCreation={this.props.onNewTaskCreation}/>;
     } else {
-      currentlyVisibleContent = <ConfirmationQuestions />;
+      currentlyVisibleContent = <ConfirmationQuestions onConfirmation={this.handleConfirmation}/>;
     }
     return (
       <div>
@@ -31,5 +32,9 @@ class NewTaskControl extends React.Component {
     );
   }
 }
+
+NewTaskControl.propTypes = {
+  onNewTaskCreation: PropTypes.func
+};
 
 export default NewTaskControl;

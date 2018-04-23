@@ -1,30 +1,12 @@
 import React from 'react';
 import Task from './Task';
-export default TaskList;
+import PropTypes from 'prop-types';
 
-var masterTaskList = [
-  {
-    names: 'Jahmanz',
-    location: 'Living Room',
-    job: 'vacuum'
-  },
-  {
-    names: 'Laura',
-    location: 'grocery store',
-    job: 'Get Groceries'
-  },
-  {
-    names: 'Florence',
-    location: 'kitchen',
-    job: 'cook dinner'
-  }
-];
-
-function TaskList(){
+function TaskList(props){
   return (
     <div>
       <hr/>
-      {masterTaskList.map((task, index) =>
+      {props.taskList.map((task, index) =>
         <Task names={task.names}
           location={task.location}
           job={task.job}
@@ -33,3 +15,9 @@ function TaskList(){
     </div>
   );
 }
+
+TaskList.propTypes = {
+  taskList: PropTypes.array
+};
+
+export default TaskList;

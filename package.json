@@ -15,6 +15,7 @@
     "file-loader": "^1.1.6",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
+    "react-clock": "^2.2.1",
     "react-dom": "^15.5.4",
     "react-grid-gallery": "^0.4.8",
     "react-router-dom": "^4.0.0",
