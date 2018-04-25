@@ -5,7 +5,7 @@ function Header(){
   return (
     <div>
       <h1>Task List</h1>
-      <Link to="/">Home</Link> | <Link to="/newtask">Create Task</Link> |
+      <Link to="/">Home</Link> | <Link to="/newtask">Create Task</Link> | <Link to="/edittask">Edit Task</Link>
       <h2>{new Date().toLocaleTimeString(setInterval(1000))}</h2>
 
     </div>

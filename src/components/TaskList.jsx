@@ -6,18 +6,21 @@ function TaskList(props){
   return (
     <div>
       <hr/>
-      {props.taskList.map((task, index) =>
+      {props.taskList.map((task) =>
         <Task names={task.names}
-          location={task.location}
+          area={task.area}
           job={task.job}
-          key={index}/>
+          formattedWaitTime={task.formattedWaitTime}
+          currentRouterPath={props.currentRouterPath}
+          key={task.id}/>
       )}
     </div>
   );
 }
 
 TaskList.propTypes = {
-  taskList: PropTypes.array
+  taskList: PropTypes.array,
+  currentRouterPath: PropTypes.string
 };
 
 export default TaskList;

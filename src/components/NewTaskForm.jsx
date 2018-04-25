@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { v4 } from 'uuid';
+import Moment from 'moment';
 
 function NewTaskForm(props) {
   let _names = null;
-  let _location = null;
+  let _area = null;
   let _job = null;
 
   function handleNewTaskFormSubmission(event) {
     event.preventDefault();
-    props.onNewTaskCreation({names: _names.value, location: _location.value, job: _job.value});
+    props.onNewTaskCreation({names: _names.value, area: _area.value, job: _job.value, id: v4(), timeOpen: new Moment()});
     _names.value = '';
-    _location.value = '';
+    _area.value = '';
     _job.value = '';
-
   }
 
   return (
@@ -25,9 +26,9 @@ function NewTaskForm(props) {
           ref={(input) => {_names = input;}}/>
         <input
           type='text'
-          id='location'
-          placeholder='Location'
-          ref={(input) => {_location = input;}}/>
+          id='area'
+          placeholder='area'
+          ref={(input) => {_area = input;}}/>
         <textarea
           id='job'
           placeholder='Describe your job.'
