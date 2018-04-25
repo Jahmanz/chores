@@ -12,7 +12,8 @@ function TaskList(props){
           job={task.job}
           formattedWaitTime={task.formattedWaitTime}
           currentRouterPath={props.currentRouterPath}
-          key={task.id}/>
+          key={task.id}
+          onTaskSelection={props.onTaskSelection}/>
       )}
     </div>
   );
@@ -20,7 +21,8 @@ function TaskList(props){
 
 TaskList.propTypes = {
   taskList: PropTypes.array,
-  currentRouterPath: PropTypes.string
+  currentRouterPath: PropTypes.string,
+  onTaskSelection: PropTypes.func
 };
 
 export default TaskList;

@@ -12,9 +12,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       masterTaskList: [],
-      selectedTicket: null
+      selectedTask: null
     };
     this.handleAddingNewTaskToList = this.handleAddingNewTaskToList.bind(this);
+    this.handleChangingSelectedTask = this.handleChangingSelectedTask.bind(this);
   }
 
   componentDidMount() {
@@ -43,6 +44,10 @@ class App extends React.Component {
     this.setState({masterTaskList: newMasterTaskList});
   }
 
+  handleChangingSelectedTask(task){
+    this.setState({selectedTask: task});
+  }
+
   render(){
     return (
       <div>
@@ -50,11 +55,14 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' render={()=><TaskList taskList={this.state.masterTaskList} />} />
           <Route path='/newtask' render={()=><NewTaskControl onNewTaskCreation={this.handleAddingNewTaskToList} />} />
-          <Route path='/edittask' render={(props)=><EditTask taskList={this.state.masterTaskList} currentRouterPath={props.area.pathname} />} />
+          <Route path='/edittask' render={(props)=><EditTask taskList={this.state.masterTaskList} currentRouterPath={props.location.pathname}
+            onTaskSelection={this.handleChangingSelectedTask}
+            selectedTask={this.state.selectedTask}/>} />
         </Switch>
       </div>
     );
   }
+
 }
 
 export default App;

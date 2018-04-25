@@ -12,12 +12,11 @@ function Task(props){
         `}</style>
       <h3>{props.area} - {props.names}</h3>
       <h4>{props.formattedWaitTime}</h4>
-      <p><em>{props.job}</em></p>
       <hr/>
     </div>;
   if (props.currentRouterPath === '/edittask'){
     return (
-      <div onClick={() => {alert('hey, you just clicked the task belonging to ' + props.names);}}>
+      <div onClick={() => {props.onTaskSelection({names: props.names, area: props.area, job: props.job, formattedWaitTime: props.formattedWaitTime});}}>
         {taskInformation}
       </div>
     );
@@ -35,7 +34,8 @@ Task.propTypes = {
   area: PropTypes.string.isRequired,
   job: PropTypes.string,
   formattedWaitTime: PropTypes.string.isRequired,
-  currentRouterPath: PropTypes.string
+  currentRouterPath: PropTypes.string,
+  onTaskSelection: PropTypes.func
 };
 
 export default Task;
