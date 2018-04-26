@@ -16,7 +16,7 @@ function Task(props){
     </div>;
   if (props.currentRouterPath === '/edittask'){
     return (
-      <div onClick={() => {props.onTaskSelection({names: props.names, area: props.area, job: props.job, formattedWaitTime: props.formattedWaitTime});}}>
+      <div onClick={() => {props.onTaskSelection(props.taskId);}}>
         {taskInformation}
       </div>
     );
@@ -35,7 +35,8 @@ Task.propTypes = {
   job: PropTypes.string,
   formattedWaitTime: PropTypes.string.isRequired,
   currentRouterPath: PropTypes.string,
-  onTaskSelection: PropTypes.func
+  onTaskSelection: PropTypes.func,
+  taskId: PropTypes.string.isRequired
 };
 
 export default Task;

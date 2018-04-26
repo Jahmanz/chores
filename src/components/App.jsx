@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      masterTaskList: [],
+      masterTaskList: {},
       selectedTask: null
     };
     this.handleAddingNewTaskToList = this.handleAddingNewTaskToList.bind(this);
@@ -21,7 +21,7 @@ class App extends React.Component {
   componentDidMount() {
     this.waitTimeUpdateTimer = setInterval(() =>
       this.updateTaskElapsedWaitTime(),
-    1000
+    10000
     );
   }
 
@@ -30,22 +30,23 @@ class App extends React.Component {
   }
 
   updateTaskElapsedWaitTime() {
-    let newMasterTaskList = this.state.masterTaskList.slice();
-    newMasterTaskList.forEach((task) =>
-      task.formattedWaitTime = (task.timeOpen).fromNow(true)
-    );
+    var newMasterTaskList = Object.assign({}, this.state.masterTaskList);
+    Object.keys(newMasterTaskList).forEach(taskId => {
+      newMasterTaskList[taskId].formattedWaitTime = (newMasterTaskList[taskId].timeOpen).fromNow(true);
+    });
     this.setState({masterTaskList: newMasterTaskList});
   }
 
   handleAddingNewTaskToList(newTask){
-    var newMasterTaskList = this.state.masterTaskList.slice();
-    newTask.formattedWaitTime = (newTask.timeOpen).fromNow(true);
-    newMasterTaskList.push(newTask);
+    var newMasterTaskList = Object.assign({}, this.state.masterTaskList, {
+      [newTask.id]: newTask
+    });
+    newMasterTaskList[newTask.id].formattedWaitTime = newMasterTaskList[newTask.id].timeOpen.fromNow(true);
     this.setState({masterTaskList: newMasterTaskList});
   }
 
-  handleChangingSelectedTask(task){
-    this.setState({selectedTask: task});
+  handleChangingSelectedTask(taskId){
+    this.setState({selectedTask: taskId});
   }
 
   render(){

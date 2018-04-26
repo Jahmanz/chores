@@ -6,7 +6,7 @@ import TaskDetail from './TaskDetail';
 function EditTask(props){
   let optionalSelectedTaskContent = null;
   if (props.selectedTask != null){
-    optionalSelectedTaskContent =  <TaskDetail selectedTask={props.selectedTask}/>;
+    optionalSelectedTaskContent =  <TaskDetail selectedTask={props.taskList[props.selectedTask]}/>;
   }
   return (
     <div>
@@ -25,7 +25,7 @@ EditTask.propTypes = {
   taskList: PropTypes.array,
   currentRouterPath: PropTypes.string.isRequired,
   onTaskSelection: PropTypes.func.isRequired,
-  selectedTask: PropTypes.object
+  selectedTask: PropTypes.string
 };
 
 export default EditTask;
