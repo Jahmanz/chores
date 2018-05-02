@@ -4,14 +4,23 @@ import App from './components/App';
 import { AppContainer } from 'react-hot-loader';
 import { HashRouter } from 'react-router-dom';
 import BackgroundImage from 'react-background-image-loader';
+import { createStore } from 'redux';
+import taskListReducer from './reducers/task-list-reducer';
+import { Provider } from 'react-redux';
+
+const store = createStore(taskListReducer);
+
+let unsubscribe = store.subscribe(() =>
+  console.log(store.getState())
+);
 
 const render = (Component) => {
   ReactDOM.render(
-    <AppContainer>
-      <HashRouter>
+    <HashRouter>
+      <Provider store={store}>
         <Component/>
-      </HashRouter>
-    </AppContainer>,
+      </Provider>
+    </HashRouter>,
     document.getElementById('react-app-root')
   );
 };

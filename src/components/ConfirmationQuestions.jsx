@@ -10,13 +10,13 @@ function ConfirmationQuestions(props){
         }
         `}</style>
       <p>Sure you want to add a job?</p>
-      <button onClick={props.onConfirmation}>Yes</button>
-    </div>
-  );
-}
+        <button onClick={props.onTroubleshootingConfirmation}>Yes</button>
+      </div>
+    );
+  }
 
-ConfirmationQuestions.propTypes = {
-  onConfirmation: PropTypes.func
-};
+  ConfirmationQuestions.propTypes = {
+    onTroubleshootingConfirmation: PropTypes.func
+  };
 
-export default ConfirmationQuestions;
+  export default ConfirmationQuestions;
