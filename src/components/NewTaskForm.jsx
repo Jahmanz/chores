@@ -18,6 +18,11 @@ function NewTaskForm(props) {
 
   return (
     <div>
+      <style global jsx>{`
+        div {
+          background-color: #e0b18b;
+        }
+        `}</style>
       <form onSubmit={handleNewTaskFormSubmission}>
         <input
           type='text'

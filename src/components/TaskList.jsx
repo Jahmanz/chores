@@ -5,6 +5,11 @@ import PropTypes from 'prop-types';
 function TaskList(props){
   return (
     <div>
+      <style global jsx>{`
+        div {
+          background-color: #e0b18b;
+        }
+        `}</style>
       <hr/>
       {Object.keys(props.taskList).map(function(taskId) {
         var task = props.taskList[taskId];

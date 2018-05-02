@@ -7,10 +7,11 @@ function Task(props){
     <div>
       <style global jsx>{`
         div {
-          background-color: beige;
+          background-color: #e0b18b;
         }
         `}</style>
-      <h3>{props.area} - {props.names}</h3>
+      <h4><bold>{props.names}</bold></h4>
+      <h3>{props.area} - {props.job}</h3>
       <h4>{props.formattedWaitTime}</h4>
       <hr/>
     </div>;
