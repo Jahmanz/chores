@@ -7,8 +7,9 @@ import BackgroundImage from 'react-background-image-loader';
 import { createStore } from 'redux';
 import taskListReducer from './reducers/task-list-reducer';
 import { Provider } from 'react-redux';
+import rootReducer from './reducers/index';
 
-const store = createStore(taskListReducer);
+const store = createStore(rootReducer);
 
 let unsubscribe = store.subscribe(() =>
   console.log(store.getState())

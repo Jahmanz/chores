@@ -63,7 +63,7 @@ App.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    masterTaskList: state
+    masterTaskList: state.masterTaskList
   };
 };
 
