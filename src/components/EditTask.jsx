@@ -2,30 +2,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TaskList from './TaskList';
 import TaskDetail from './TaskDetail';
+import { connect } from 'react-redux';
 
 function EditTask(props){
   let optionalSelectedTaskContent = null;
-  if (props.selectedTask != null){
+  if (props.selectedTask.length > 0){
     optionalSelectedTaskContent =  <TaskDetail selectedTask={props.taskList[props.selectedTask]}/>;
   }
   return (
     <div>
-      <h2>EditTask</h2>
+      <h2>Edit Task</h2>
       {optionalSelectedTaskContent}
       <TaskList
         taskList={props.taskList}
-        currentRouterPath={props.currentRouterPath}
-        onTaskSelection={props.onTaskSelection}/>
+        currentRouterPath={props.currentRouterPath} />
     </div>
   );
 }
 
-
 EditTask.propTypes = {
-  taskList: PropTypes.array,
+  taskList: PropTypes.object,
   currentRouterPath: PropTypes.string.isRequired,
-  onTaskSelection: PropTypes.func.isRequired,
   selectedTask: PropTypes.string
 };
 
-export default EditTask;
+const mapStateToProps = state => {
+  return {
+    selectedTask: state.selectedTask,
+    taskList: state.masterTaskList
+  };
+};
+
+export default connect(mapStateToProps)(EditTask);

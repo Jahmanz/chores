@@ -1,8 +1,19 @@
 import Moment from 'moment';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-function Task(props){
+  function Task(props){
+
+  function handleSavingSelectedTask(taskId){
+    const { dispatch } = props;
+    const action = {
+      type: 'SELECT_TASK',
+      taskId: taskId
+    };
+    dispatch(action);
+  }
+
   const taskInformation =
     <div>
       <style global jsx>{`
@@ -17,9 +28,9 @@ function Task(props){
     </div>;
   if (props.currentRouterPath === '/edittask'){
     return (
-      <div onClick={() => {props.onTaskSelection(props.taskId);}}>
-        {taskInformation}
-      </div>
+      <div onClick={() => {handleSavingSelectedTask(props.taskId);}}>
+  {taskInformation}
+</div>
     );
   } else {
     return (
@@ -36,8 +47,7 @@ Task.propTypes = {
   job: PropTypes.string,
   formattedWaitTime: PropTypes.string.isRequired,
   currentRouterPath: PropTypes.string,
-  onTaskSelection: PropTypes.func,
   taskId: PropTypes.string.isRequired
 };
 
-export default Task;
+export default connect()(Task);

@@ -10,18 +10,10 @@ import PropTypes from 'prop-types';
 
 class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedTask: null
-    };
-    this.handleChangingSelectedTask = this.handleChangingSelectedTask.bind(this);
-  }
-
   componentDidMount() {
     this.waitTimeUpdateTimer = setInterval(() =>
       this.updateTaskElapsedWaitTime(),
-    60000
+    10000
     );
   }
 
@@ -37,10 +29,6 @@ class App extends React.Component {
     // this.setState({masterTaskList: newMasterTaskList});
   }
 
-  handleChangingSelectedTask(taskId){
-    this.setState({selectedTask: taskId});
-  }
-
   render(){
     return (
       <div>
@@ -48,9 +36,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' render={()=><TaskList taskList={this.props.masterTaskList} />} />
           <Route path='/newtask' render={()=><NewTaskControl />} />
-          <Route path='/edittask' render={(props)=><EditTask taskList={this.props.masterTaskList} currentRouterPath={props.location.pathname}
-            onTaskSelection={this.handleChangingSelectedTask}
-            selectedTask={this.state.selectedTask}/>} />
+          <Route path='/edittask' render={(props)=><EditTask currentRouterPath={props.location.pathname} />} />
         </Switch>
       </div>
     );
